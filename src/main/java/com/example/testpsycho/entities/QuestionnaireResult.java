@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class QuestionnaireResult {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +28,7 @@ public class QuestionnaireResult {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private UserApp user;
 
     @OneToMany(mappedBy = "questionnaireResult")
     private List<Answer> answers;
